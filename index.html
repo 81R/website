@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
   <style>
     :root {
-      /* Material 3 color scheme */
+      /* Light theme (Material 3) */
       --md-sys-color-primary: #6750a4;
       --md-sys-color-on-primary: #fff;
       --md-sys-color-secondary: #625b71;
@@ -18,11 +18,22 @@
       --md-sys-color-on-surface: #1c1b1f;
     }
 
+    body.dark-mode {
+      /* Dark theme (Material 3) */
+      --md-sys-color-primary: #d0bcff;
+      --md-sys-color-on-primary: #381e72;
+      --md-sys-color-secondary: #e8def8;
+      --md-sys-color-background: #181824;
+      --md-sys-color-surface: #1c1b1f;
+      --md-sys-color-on-surface: #e6e1e5;
+    }
+
     body {
       margin: 0;
       font-family: 'Roboto', Arial, sans-serif;
       background: var(--md-sys-color-background);
       color: var(--md-sys-color-on-surface);
+      transition: background 0.2s, color 0.2s;
     }
 
     header {
@@ -33,6 +44,12 @@
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
 
     nav a {
@@ -61,11 +78,25 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      color: var(--md-sys-color-on-surface);
+      transition: background 0.2s, color 0.2s;
     }
 
     h1, h2 {
       font-weight: 500;
       margin-top: 0;
+    }
+
+    .dark-toggle-btn {
+      background: var(--md-sys-color-secondary);
+      color: var(--md-sys-color-on-primary);
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: background 0.2s, color 0.2s;
     }
 
     @media (max-width: 600px) {
@@ -75,17 +106,24 @@
       .card {
         padding: 1rem;
       }
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div style="font-size: 1.5rem; font-weight: 700;">My Material 3 Website</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+    <div class="header-content">
+      <div style="font-size: 1.5rem; font-weight: 700;">My Material 3 Website</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+    <button class="dark-toggle-btn" id="themeToggle">🌙 Dark Mode</button>
   </header>
   <main>
     <div class="card">
@@ -102,8 +140,34 @@
         <li>Responsive layout</li>
         <li>Material Web Components</li>
         <li>Accessible design</li>
+        <li>Dark mode support</li>
       </ul>
     </div>
   </main>
+  <script>
+    // Dark mode toggle logic
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    function updateThemeBtn() {
+      if (body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = '☀️ Light Mode';
+      } else {
+        toggleBtn.textContent = '🌙 Dark Mode';
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      updateThemeBtn();
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Optional: persist theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+    updateThemeBtn();
+  </script>
 </body>
 </html>
