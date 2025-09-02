@@ -1,0 +1,44 @@
+body {
+  background: #f3f4f6;
+  color: #22223b;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 400px;
+  margin: 4rem auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  text-align: center;
+  padding: 2rem;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #22223b;
+  margin-bottom: 1rem;
+}
+h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0 1rem 0;
+}
+.bio {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.github-link {
+  display: inline-block;
+  background: #22223b;
+  color: #fff;
+  padding: 0.7rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.github-link:hover {
+  background: #4a4e69;
+}
