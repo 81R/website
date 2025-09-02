@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Material 3 Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Material Web Components CDN -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@material/web@1.0.0/dist/material-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
+  <style>
+    :root {
+      /* Material 3 color scheme */
+      --md-sys-color-primary: #6750a4;
+      --md-sys-color-on-primary: #fff;
+      --md-sys-color-secondary: #625b71;
+      --md-sys-color-background: #f5f5f5;
+      --md-sys-color-surface: #fff;
+      --md-sys-color-on-surface: #1c1b1f;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: var(--md-sys-color-background);
+      color: var(--md-sys-color-on-surface);
+    }
+
+    header {
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    nav a {
+      color: var(--md-sys-color-on-primary);
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background: var(--md-sys-color-surface);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h1, h2 {
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+      header, main {
+        padding: 1rem;
+      }
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="font-size: 1.5rem; font-weight: 700;">My Material 3 Website</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="card">
+      <h1>Welcome to Material 3!</h1>
+      <p>This site is now styled with Material Design 3. Enjoy modern colors, components, and responsive layouts.</p>
+      <!-- Material Button -->
+      <md-filled-button label="Get Started" @click="${() => alert('Welcome!')}"></md-filled-button>
+    </div>
+
+    <div class="card">
+      <h2>Features</h2>
+      <ul>
+        <li>Material 3 color scheme</li>
+        <li>Responsive layout</li>
+        <li>Material Web Components</li>
+        <li>Accessible design</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>
